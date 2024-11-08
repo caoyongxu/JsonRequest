@@ -34,3 +34,4 @@ JsonRequest.sln.DotSettings.user
 _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
+/.vs/JsonRequest

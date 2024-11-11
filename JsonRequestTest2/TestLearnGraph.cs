@@ -13,23 +13,22 @@ namespace JsonRequestTest2
         //private const string Auth_scope = "https://content-proxy-sandbox.docs.microsoft.com/.default";
 
         [TestMethod]
-        [DataRow(Query_skills)]
+        [DataRow(Query_Roles)]
+        //[DataRow(Query_lpCert)]
         public void TestMethod1(string query)
         {
-            var q = query.Replace("\r\n", "").Replace(" ", "");
             AccessToken AzOpenAIAccessToken = HttpRequestHelper.GetAADPersonalToken();
-            var result = HttpRequestHelper.ExecuteHttpPostAsync(q,
+            var result = HttpRequestHelper.ExecuteHttpPostAsync(query,
                 Endpoint, AzOpenAIAccessToken.Token).GetAwaiter().GetResult();
-            Console.WriteLine(q);
+            Console.WriteLine(AzOpenAIAccessToken.Token);
+            Console.WriteLine(query);
             Console.WriteLine(result);
-
-            Assert.IsTrue(true);
         }
 
 
-        private const string Query_skills = @"
+        private const string Query_Roles = @"
 {
-    ""jsonData"": [
+    ""query"": [
         {
             ""source"": {
                 ""nodeType"": ""TAXONOMY_SKILLS"",
@@ -43,6 +42,50 @@ namespace JsonRequestTest2
 }
 ";
 
-        private const string Query_Roles = @"";
+        private const string Query_lpCert = @"
+{
+    ""query"": [
+        {
+            ""source"": {
+                ""nodeType"": ""learningpath"",
+                ""properties"": {
+                    ""uid"": ""LEARN.WWL.CREATE-COMPUTER-VISION-SOLUTIONS-AZURE-AI""
+                }
+            },
+            ""relationship"": ""For-Certification"",
+            ""target"": {
+                ""nodeType"": ""certification""
+            }
+        }
+    ],
+    ""select"": [
+        ""certification"",
+        ""learningpath""
+    ]
+}";
+
+
+        private const string Query_lp2Module = @"
+{
+    ""query"": [
+        {
+            ""source"": {
+                ""nodeType"": ""learningpath"",
+                ""properties"": {
+                    ""uid"": ""LEARN.WWL.CREATE-COMPUTER-VISION-SOLUTIONS-AZURE-AI""
+                }
+            },
+            ""relationship"": ""For-Certification"",
+            ""target"": {
+                ""nodeType"": ""certification""
+            }
+        }
+    ],
+    ""select"": [
+        ""certification"",
+        ""learningpath""
+    ]
+}";
+
     }
 }

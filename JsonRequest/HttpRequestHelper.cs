@@ -17,7 +17,7 @@ namespace JsonRequest
             var httpClient = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, endPoint);
 
-            if (token != null && request.Headers.Authorization == null)
+            if (token != null)
             {
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             }

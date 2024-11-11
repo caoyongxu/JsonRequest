@@ -38,3 +38,4 @@ _ReSharper*/
 /JsonRequest/.vs/JsonRequest.csproj.dtbcache.json
 *.dll
 packages/
+.vs/

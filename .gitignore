@@ -34,8 +34,6 @@ JsonRequest.sln.DotSettings.user
 _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
-/.vs/JsonRequest
-/JsonRequest/.vs/JsonRequest.csproj.dtbcache.json
 *.dll
 packages/
 .vs/
